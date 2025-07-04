@@ -1,69 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charity : Water — Clean Water Powered by You</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" /> <!-- character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- mobile scaling -->
+  <title>Charity : Water — Clean Water Powered by You</title> <!-- page title -->
+  <link rel="stylesheet" href="style.css" /> <!-- link to CSS file -->
 </head>
 
 <body>
   <!-- ░░ Top Nav ░░ -->
-  <header class="nav">
-    <img src="logo-placeholder.png" alt="charity: water logo" class="logo" />
-
-    <nav class="nav-links">
-      <a href="#">Take Action</a>
-      <a href="#">About Us</a>
-      <a href="#">Why Water?</a>
+  <header class="nav"> <!-- navigation bar -->
+    <div class="logo-bg"></div>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="#action">Take Action</a> <!-- nav link -->
+        <a href="#about">About Us</a> <!-- nav link -->
+        <a href="#why-water">Why Water</a> <!-- nav link -->
+      </div>
       <div class="auth-links">
-        <a href="#">Sign In</a>
-        <a href="#donate" class="btn-give">Give</a>
+        <a href="#signin">Sign In</a> <!-- sign in link -->
+        <span class="divider"></span>
+        <button class="btn-give">Give</button> <!-- give button -->
       </div>
     </nav>
   </header>
 
   <!-- ░░ Hero ░░ -->
-  <section class="hero">
+  <section class="hero"> <!-- main section -->
     <!-- left -->
-    <div class="hero-copy">
-      <h1>Clean Water Powered by You</h1>
-      <p class="subhead">
-        Change starts with you—see wells bloom and futures brighten with just one click.
-      </p>
+    <div class="hero-copy"> <!-- left column -->
+      <h1>Clean Water Powered by You</h1> <!-- main heading -->
 
-      <div class="donation-card" id="donate">
-        <h3>Give Now or Scan the QR</h3>
+      <div class="subhead-box"> <!-- new box for subheading -->
+        <p class="subhead">
+          Change starts with you—see wells bloom and futures brighten with just one click.
+        </p> <!-- subheading -->
+      </div>
 
-        <div class="donation-grid">
-          <button>$5 USD</button>
-          <button>$15 USD</button>
-          <button>$25 USD</button>
-          <button>Other</button>
-          <img src="qr-placeholder.png" alt="QR code to donate" class="qr" />
+      <div class="donation-card" id="donate"> <!-- donation card -->
+        <h3>Give Now or Scan the QR Code</h3> <!-- card heading -->
+
+        <div class="donation-grid"> <!-- donation buttons and QR -->
+          <button>$5 USD</button> <!-- donation button -->
+          <button>$15 USD</button> <!-- donation button -->
+          <button>$25 USD</button> <!-- donation button -->
+          <button>Other</button> <!-- other amount button -->
+          <img src="img/QR_code.png" alt="QR code to donate" class="qr" /> <!-- QR code image -->
         </div>
 
-        <button class="btn-primary">Start the Ripple</button>
+        <button class="btn-primary">Start the Ripple</button> <!-- main donate button -->
       </div>
 
       <a href="#" class="newsletter-link">
-        See What You Fund — Join The Newsletter
-      </a>
+        See What You Fund — Join The <span class="newsletter-underline">Newsletter</span>
+      </a> <!-- newsletter link -->
     </div>
 
     <!-- right -->
-    <div class="hero-img">
-      <img src="child-drinking-water-placeholder.jpg"
-           alt="Girl drinking clean water from a tap" />
+    <div class="hero-img"> <!-- right column box -->
+      <img src="img/girldrinking.jpg" alt="Girl drinking clean water" /> <!-- right side image -->
     </div>
   </section>
 
-  <!-- decorative wave -->
-  <div class="wave"></div>
-
   <!-- ░░ Footer ░░ -->
-  <footer class="footer">
-    © 2025 charity: water. All rights reserved.
-  </footer>
+  <div class="footer-wave-container">
+    <footer class="footer">
+      © 2025 charity: water. All rights reserved.
+    </footer> <!-- footer -->
+  </div>
 </body>
 </html>
