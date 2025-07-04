@@ -1,0 +1,353 @@
+/* Reset + globals */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;      /* include border in size */
+  margin: 0;                   /* remove default margin */
+  padding: 0;                  /* remove default padding */
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica Neue", Arial, sans-serif; /* page font */
+  color: #1b344d;              /* main text color */
+  background: #d5d9df;         /* page background color */
+  line-height: 1.5;            /* space between lines */
+}
+
+/* Navigation */
+.nav {
+  display: flex;               /* horizontal layout */
+  align-items: center;         /* center items vertically */
+  justify-content: center;     /* center all nav content */
+  gap: 2rem;                   /* space between nav items */
+  padding: 3px;        /* space inside nav bar */
+  background: #ffffff;         /* nav background */
+  width: 100%;
+  position: relative;
+  height: 40px; /* fixed header height */
+}
+
+/* Logo as background */
+.logo-bg {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;      /* adjust width as needed */
+  height: 150px;     /* adjust height as needed */
+  background: url('img/charitywater_logo.png') no-repeat center center;
+  background-size: contain;
+  z-index: 2;
+  pointer-events: none; /* logo is decorative, not clickable */
+}
+
+/* Remove old .logo img styles if not needed */
+.logo {
+  display: none;
+}
+
+.nav-links {
+  display: flex;               /* horizontal links */
+  gap: 4rem;                /* space between links */
+  font-weight: 600;            /* bold links */
+  justify-content: center;   /* center horizontally */
+  flex: 1 1 auto;
+}
+
+.nav-links a {
+  text-decoration: none;       /* remove underline */
+  color: #1b344d;              /* link color */
+  transition: opacity 0.2s;    /* fade on hover */
+}
+
+.nav-links a:hover { opacity: 0.7; } /* link hover effect */
+
+/* Auth links (Sign In, Give) to the right */
+.auth-links {
+  display: flex;
+  gap: 0.9rem;
+  margin-left: auto;      /* push auth links to the far right */
+  align-items: center;
+}
+
+.auth-links .divider {
+  width: 1px;
+  height: 24px;
+  background: black;
+  display: inline-block;
+}
+
+.btn-give {
+  background: #ffd827;         /* button color */
+  border: 2px solid #000;      /* button border */
+  border-radius: 4px;          /* rounded corners */
+  padding: 0.35rem 0.9rem;     /* button padding */
+}
+
+/* Hero section: two equal columns */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* two equal columns */
+  width: 100%;
+  height: calc(100vh - 80px);       /* fill landing page minus header/footer */
+  margin: 0;
+  padding: 0;
+  background: #CBCCD1;              /* set hero background to grey */
+  border: none;
+  min-height: 0;
+  box-sizing: border-box;
+  border-top: #000 solid 3px;
+  border-bottom: black solid 3px;
+  overflow: hidden;
+}
+
+/* Add the background image to the left half, bottom-aligned */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  background: url('img/background.png') no-repeat left bottom;
+  background-size: contain;
+  background-position: left bottom;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Make sure hero content is above the background image */
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Left column: text and cards */
+.hero-content, .hero-copy {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;      /* <-- add this line to center all content horizontally */
+  padding: 40px;
+  border-radius: 0.5rem 0 0 0.5rem;
+  box-shadow: 0 0 24px 0 rgba(0,0,0,0.04);
+  min-width: 320px;
+  z-index: 1;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.hero-copy {
+  flex: 1 1 340px;             /* flexible width */
+  max-width: none;            /* max width */
+}
+
+.hero-copy h1 {
+  font-size: 2.35rem;          /* big heading */
+  color: #003b79;              /* heading color */
+  margin-bottom: 0;       /* space below heading */
+}
+
+.subhead-box {
+  text-align: center;      /* center the text inside the box */
+  margin-bottom: 15px;   /* space below the box */
+}
+
+.subhead {
+  margin-bottom: 0;        /* remove bottom margin (handled by box) */
+  max-width: 45ch;         /* limit line length */
+  display: inline-block;   /* shrink to fit text */
+}
+
+/* Donation card */
+.donation-card {
+  background: #ffffff;
+  border: 2px solid #003b79;
+  border-radius: 16px; /* increased for more rounded corners */
+  padding: 16px 19.2px 22.4px;
+  margin-bottom: 12px;
+  min-width: 510px;
+  height: 250px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.donation-card h3 {
+  background: #3f6587;
+  color: #fff;
+  border: #000 solid 1px;
+  text-align: center;
+  padding: 7.2px;              /* 0.45rem */
+  font-size: 16px;             /* 1rem */
+  border-radius: 2px;
+  margin-bottom: 16px;         /* 1rem */
+  width: 100%
+}
+
+.donation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9.6px;                  /* 0.6rem */
+  margin-bottom: 16px;         /* 1rem */
+}
+
+.donation-grid button {
+  padding: 9.6px 46px;        /* 0.6rem 0.4rem */
+  background: #f2f5f8;
+  border: 1px solid #3f6587;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.donation-grid button:hover { background: #e8eff6; }
+
+.qr {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  grid-row: 1 / span 2;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px 16px;          /* 0.75rem 1rem */
+  background: #ffd827;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 14px;             /* 1rem */
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.btn-primary:hover { transform: scale(1.03); }
+
+/* Newsletter card */
+.newsletter-link {
+  display: block;
+  width: 100%;
+  max-width: 340px;                /* match donation card width */
+  margin: 0 auto 24px auto;
+  background: #3f6587;
+  background: rgba(63,101,135,0.75);
+  color: #fff;
+  padding: 16px 19.2px 22.4px;
+  border-radius: 4px;
+  border: 1px solid #003b79;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.newsletter-link .newsletter-underline {
+  color: #ffd827;                  /* highlight color for the link */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Make newsletter card same size as donation card */
+.newsletter-link {
+  max-width: 512.5px;            /* match donation card min-width if needed */
+  max-height: 40px;
+  padding:10px 19.2px 22.4px; /* match donation card padding */
+  margin-bottom: 24px;         /* match donation card margin */
+  font-size: 16px;             /* match donation card font size */
+}
+
+/* Right column: image only */
+.hero-img {
+  grid-column: 2 / 3;
+  width: 100%;
+  height: auto; /* auto height to fit content */
+  padding: 0;
+  margin: 0;
+  background: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center; 
+  border: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Center the About Us section in the middle of the page */
+#about, .about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh; /* or 100vh for full viewport */
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+  }
+  .hero-content, .hero-copy, .hero-img {
+    grid-column: 1 / 2;
+    border-radius: 0;
+    max-width: 100%;
+    min-width: 0;
+    padding: 1.5rem 1rem;
+  }
+  .hero-img {
+    height: 250px;
+  }
+  .hero-img img {
+    height: 100%;
+  }
+}
+
+/* Footer */
+.footer {
+  height: 40px;
+  display: flex;                  /* use flex for vertical centering */
+  align-items: center;            /* center content vertically */
+  justify-content: center;        /* center content horizontally */
+  text-align: center;
+  font-size: 0.85rem;
+  background: #ffffff;
+  border-top: 3px solid #000;
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.95);
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
